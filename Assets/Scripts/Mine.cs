@@ -58,4 +58,12 @@ public class Mine : MonoBehaviour
             // Destroy the mine gameobject
             Destroy(gameObject);
     }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, proximityRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, blastRadius);
+    }
 }
