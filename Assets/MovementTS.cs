@@ -31,35 +31,34 @@ public class MovementTS : MonoBehaviour
 
     private void Update()
     {
-        // var h = InputManager.Instance.GetHorizontal();
-        // var v = InputManager.Instance.GetVertical();
-        // m_currentMoveSpeed = InputManager.Instance.isSprinting() ? m_runSpeed : m_walkSpeed; 
+        var mousePos = Input.mousePosition;
+        RotateTowardMouse(mousePos);
 
         var h = Input.GetAxis("Horizontal"); 
         var v = Input.GetAxis("Vertical"); 
         m_currentMoveSpeed = Input.GetKeyDown(KeyCode.LeftShift) ? m_runSpeed : m_walkSpeed; 
 
-   
         m_moveVector = new Vector2(h, v).normalized;
 
-        // Vector3 localMovement = transform.InverseTransformDirection(m_moveVector);
-        // Vector3 desiredForward = Vector3.RotateTowards(transform.forward, localMovement, m_turnSpeed * Time.deltaTime, 0f);
+        SetAnimAxisValues(h, v);
+    }
 
-        // m_anim.SetFloat("Horizontal", localMovement.x);
-        // m_anim.SetFloat("Vertical", localMovement.y);
+    private void SetAnimAxisValues(float h, float v) 
+    {
+        var dir = m_modelTransform.InverseTransformDirection(m_characterController.velocity);
+        
+        var animHorizontal      = Mathf.Clamp(dir.x,-1,1); 
+        var animVertical        = Mathf.Clamp(dir.z,-1,1); 
+        
 
-        m_anim.SetFloat("Horizontal", h);
-        m_anim.SetFloat("Vertical", v);
+        m_anim.SetFloat("Horizontal", animHorizontal);
+        m_anim.SetFloat("Vertical", animVertical);
 
 
         if (Mathf.Abs(h) > 0 || Mathf.Abs(v) > 0)
             m_anim.SetBool("Moving", true);
         else
             m_anim.SetBool("Moving", false);
-        // var mousePos = Mouse.current.position.ReadValue();
-        var mousePos = Input.mousePosition;
-
-        RotateTowardMouse(mousePos);
     }
 
     private void RotateTowardMouse(Vector2 mousePos)
