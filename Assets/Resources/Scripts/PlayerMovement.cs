@@ -44,23 +44,23 @@ public class PlayerMovement : MonoBehaviour
         
         if (m_characterController.velocity.y > .25f)
         {
-            Debug.Log("Rising");
+            // Debug.Log("Rising");
         }
         else if (m_characterController.velocity.y < -.25f)
         {
-            Debug.Log("Falling");
+            // Debug.Log("Falling");
             m_isFalling = true;
         }
 
         if (!IsGrounded() && wasGrounded)
         {
-            Debug.Log("LIFT OFF!");
+            // Debug.Log("LIFT OFF!");
         }
         else if (IsGrounded() && !wasGrounded)
         {
             m_isFalling = false;
             Landing?.Invoke();  
-            Debug.Log("Landing");
+            // Debug.Log("Landing");
         }
 
         wasGrounded = IsGrounded();
