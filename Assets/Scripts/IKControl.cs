@@ -53,6 +53,7 @@ public class IKControl : MonoBehaviour {
                     m_animator.SetIKRotationWeight(AvatarIKGoal.LeftHand,1);  
                     m_animator.SetIKPosition(AvatarIKGoal.LeftHand, LeftHandObj.position);
                     m_animator.SetIKRotation(AvatarIKGoal.LeftHand, Quaternion.LookRotation(LeftHandObj.right));
+                    m_animator.SetIKRotation(AvatarIKGoal.LeftHand, Quaternion.LookRotation(-LeftHandObj.right));
                 }        
             }
             //if the IK is not active, set the position and rotation of the hand and head back to the original position

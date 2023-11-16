@@ -56,5 +56,7 @@ public class AnimationHandler : MonoBehaviour
         playerMovement.Landing -= SetLandingAnimation;
         playerAttack.Attack -= SetAttackAnimation;
     }
+
+
     #endregion
 }

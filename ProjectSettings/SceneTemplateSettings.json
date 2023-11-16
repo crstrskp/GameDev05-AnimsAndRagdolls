@@ -1,5 +1,14 @@
 {
-    "templatePinStates": [],
+    "templatePinStates": [
+        {
+            "templateId": "Basic (Built-in)",
+            "isEnabled": true
+        },
+        {
+            "templateId": "Empty (Built-in)",
+            "isEnabled": true
+        }
+    ],
     "dependencyTypeInfos": [
         {
             "userAdded": false,
